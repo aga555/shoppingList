@@ -1,11 +1,13 @@
 package com.example.shoppinglist;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -19,7 +21,9 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-     public  final static String KEY=  "MAGIC KEY";
+    public final static String KEY = "MAGIC KEY";
+    public final static String SP = "PRIVATE STORAGE";
+    public final static String SP_KEY = "SHARED PREFERENCES KEY";
     @BindView(R.id.shoppingListButton)
     Button shoppingListButton;
 
@@ -43,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.shoppingListButton)
     void onClickShoppingList() {
         Intent intent = new Intent(this, ShoppingListActivity.class);
-        intent.putExtra(KEY,"Tajna wiadomość");
+        intent.putExtra(KEY, "Tajna wiadomość");
         startActivity(intent);
     }
 
@@ -63,6 +67,14 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            SharedPreferences sp = getSharedPreferences(SP, MODE_PRIVATE);
+            String message = sp.getString(SP_KEY, null);
+
+
+            if (message != null) {
+                Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+            }
+
             return true;
         }
 

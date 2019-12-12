@@ -1,6 +1,7 @@
 package com.example.shoppinglist;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -11,6 +12,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 import android.widget.Toast;
+
+import static com.example.shoppinglist.MainActivity.SP;
+import static com.example.shoppinglist.MainActivity.SP_KEY;
 
 public class ShoppingListActivity extends AppCompatActivity {
 
@@ -33,6 +37,9 @@ public class ShoppingListActivity extends AppCompatActivity {
         Intent intent=getIntent();
         String message= intent.getStringExtra(MainActivity.KEY);
         Toast.makeText(this,message, Toast.LENGTH_LONG).show();
+        SharedPreferences.Editor  editor = getSharedPreferences(SP,MODE_PRIVATE).edit();
+        editor.putString(SP_KEY, "super tajna wiadomość");
+        editor.apply();
 
     }
 
