@@ -2,5 +2,8 @@
     <string name="app_name">Shopping List</string>
     <string name="action_settings">Settings</string>
     <string name="shopping_list_button">Shopping List</string>
+    <string name="draw_button">Drawing</string>
+    <string name="api_button">Api</string>
+    <string name="view_button">View</string>
     <string name="title_activity_shopping_list">ShoppingListActivity</string>
 </resources>
