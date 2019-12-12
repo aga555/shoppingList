@@ -20,7 +20,11 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_shopping_list" />
+    <include
+        layout="@layout/content_shopping_list"
+        android:layout_width="match_parent"
+        android:layout_height="607dp"
+        android:background="#FFEB3B" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -28,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:backgroundTint="#03A9F4"
+        app:srcCompat="@drawable/baseline_add_black_36" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
