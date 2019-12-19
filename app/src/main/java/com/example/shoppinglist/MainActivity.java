@@ -21,9 +21,7 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-    public final static String KEY = "MAGIC KEY";
-    public final static String SP = "PRIVATE STORAGE";
-    public final static String SP_KEY = "SHARED PREFERENCES KEY";
+
     @BindView(R.id.shoppingListButton)
     Button shoppingListButton;
 
@@ -34,22 +32,19 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-       /* FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
     }
 
     @OnClick(R.id.shoppingListButton)
     void onClickShoppingList() {
         Intent intent = new Intent(this, ShoppingListActivity.class);
-        intent.putExtra(KEY, "Tajna wiadomość");
         startActivity(intent);
     }
+    @OnClick(R.id.drawButton)
+    void onClickDraw() {
+        Intent intent = new Intent(this, DrawActivity.class);
+        startActivity(intent);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -67,13 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            SharedPreferences sp = getSharedPreferences(SP, MODE_PRIVATE);
-            String message = sp.getString(SP_KEY, null);
 
-
-            if (message != null) {
-                Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
-            }
 
             return true;
         }

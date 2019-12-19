@@ -6,5 +6,6 @@
     <string name="draw_button">Rysowanie</string>
     <string name="api_button">Api</string>
     <string name="view_button">Widok</string>
+    <string name="item_list_text" >produkt</string>
     <string name="title_activity_shopping_list">ShoppingListActivity</string>
 </resources>
