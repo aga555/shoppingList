@@ -40,6 +40,6 @@ class DrawView extends View implements View.OnTouchListener {
         point.y = (int) event.getY();
         points.add(point);
         invalidate();
-        return false;
+        return true;
     }
 }
