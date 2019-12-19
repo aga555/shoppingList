@@ -8,10 +8,13 @@ import android.graphics.Point;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class DrawView extends View implements View.OnTouchListener {
 
-    Paint paint = new Paint();
-    Point point = new Point();
+   private Paint paint = new Paint();
+   private List<Point> points= new ArrayList<>();
 
     public DrawView(Context context) {
         super(context);
@@ -24,13 +27,18 @@ class DrawView extends View implements View.OnTouchListener {
 
     @Override
     protected void onDraw(Canvas canvas) {
-    canvas.drawCircle(point.x,point.y,30,paint);
+        for(Point point:points){
+
+
+    canvas.drawCircle(point.x,point.y,30,paint);}
     }
 
     @Override
     public boolean onTouch(View view, MotionEvent event) {
+        Point point=new Point();
         point.x = (int) event.getX();
         point.y = (int) event.getY();
+        points.add(point);
         invalidate();
         return false;
     }
