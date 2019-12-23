@@ -38,7 +38,7 @@ public class ApiActivity extends AppCompatActivity {
 
     }
 
-    private class ThreadClass extends AsyncTask<String, Void, Void> {
+    private class ThreadClass extends AsyncTask<String, Integer, Void> {
         @Override
         protected void onPreExecute() {
             progressBar.setVisibility(View.VISIBLE);
@@ -47,7 +47,8 @@ public class ApiActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onProgressUpdate(Void... values) {
+        protected void onProgressUpdate(Integer... values) {
+            progressBar.setProgress(values[0]);
             super.onProgressUpdate(values);
         }
 
@@ -60,17 +61,20 @@ public class ApiActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             progressBar.setVisibility(View.INVISIBLE);
-            textView.setText(textView.getText()+ "  " +"" + System.currentTimeMillis());
-            super.onPostExecute(aVoid);
+            textView.setText(textView.getText() + "  " + "" + System.currentTimeMillis());
+
         }
 
         @Override
         protected Void doInBackground(String... params) {
             String url = params[0];
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+
+            String a = url;
+            for (int i = 0; i < 1000000; i++) {
+                a = a + url;
+                if (i>0 && i % 100 == 0)
+
+                    publishProgress( i/1000);
             }
             return null;
         }
