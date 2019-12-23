@@ -49,7 +49,7 @@ public class ShoppingListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_list);
         ButterKnife.bind(this);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +74,7 @@ public class ShoppingListActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (!spinnerItems.get(position).equals("")) {
-                    itemName.setText("" + spinnerItems.get(position));
+                    itemName.setText(""+spinnerItems.get(position));
                     spinnerItems.remove(position);
                     spinnerAdapter.notifyDataSetChanged();
                 }
@@ -89,8 +89,8 @@ public class ShoppingListActivity extends AppCompatActivity {
         itemList.setAdapter(listAdapter);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    @Override
+
+    /*@Override
     protected void onPause() {
         super.onPause();
         SharedPreferences.Editor editor = getSharedPreferences(SHOPPING_LIST_KEY, MODE_PRIVATE).edit();
@@ -99,5 +99,5 @@ public class ShoppingListActivity extends AppCompatActivity {
         editor.putStringSet(LIST_ITEMS_KEY, listSetItems);
         editor.putStringSet(SPINNER_ITEMS_KEY, spinnerSetItems);
         editor.commit();
-    }
+    }*/
 }
