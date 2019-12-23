@@ -38,7 +38,7 @@ public class ApiActivity extends AppCompatActivity {
 
     }
 
-    private class ThreadClass extends AsyncTask<String, Integer, Void> {
+    private class ThreadClass extends AsyncTask<String, Integer, Float> {
         @Override
         protected void onPreExecute() {
             progressBar.setVisibility(View.VISIBLE);
@@ -54,19 +54,20 @@ public class ApiActivity extends AppCompatActivity {
 
 
         @Override
-        protected void onCancelled() {
-            super.onCancelled();
+        protected void onCancelled( Float f) {
+            super.onCancelled(f);
         }
 
         @Override
-        protected void onPostExecute(Void aVoid) {
+        protected void onPostExecute(Float f) {
             progressBar.setVisibility(View.INVISIBLE);
             textView.setText(textView.getText() + "  " + "" + System.currentTimeMillis());
+            super.onPostExecute(f);
 
         }
 
         @Override
-        protected Void doInBackground(String... params) {
+        protected Float doInBackground(String... params) {
             String url = params[0];
 
             String a = url;
